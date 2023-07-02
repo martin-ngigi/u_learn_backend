@@ -11,3 +11,14 @@ php artisan admin:install
 
 ## solve admin problems
 Link: https://www.dbestech.com/tutorials/laravel-admin-panel-config-problems-and-solutions
+
+## Install sanctum package for authentication
+```
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+```
+
+## Controller:
+```
+php artisan make:controller API/UserController
