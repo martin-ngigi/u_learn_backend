@@ -7,3 +7,7 @@ composer require encore/laravel-admin
 php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
 php artisan admin:install
 ```
+
+
+## solve admin problems
+Link: https://www.dbestech.com/tutorials/laravel-admin-panel-config-problems-and-solutions

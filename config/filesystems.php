@@ -56,6 +56,17 @@ return [
             'throw' => false,
         ],
 
+        /***
+         * MARTIN ADDED
+         * This will help solve the problem of "config error"
+         */
+        'admin' => [
+            'driver'     => 'local',
+            'root'       => public_path('uploads'),
+            'visibility' => 'public',
+            'url' => env('APP_URL').'uploads/',
+        ],
+
     ],
 
     /*
