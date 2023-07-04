@@ -59,6 +59,7 @@ return [
         /***
          * MARTIN ADDED
          * This will help solve the problem of "config error"
+         * uploads folder is where the image is uploaded and stored. i.e. public/uploads
          */
         'admin' => [
             'driver'     => 'local',

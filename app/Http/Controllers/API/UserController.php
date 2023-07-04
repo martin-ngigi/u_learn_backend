@@ -22,12 +22,12 @@ class UserController extends Controller
                 'open_id' => 'required',
                 'name' => 'required',
                 'email' => 'required',
-                'password' => 'required | min:6',
+               // 'password' => 'required | min:6',
             ]);
             if($validator->fails()){
                 return response()->json([
                     'status' => false,
-                    'message' => 'validation failed',
+                    'msg' => 'validation failed',
                     'errors' => $validator->errors()
                 ], 401);
             }
@@ -52,7 +52,7 @@ class UserController extends Controller
                 /// user first time created
                 $validated['created_at'] = Carbon::now();
                 //encrypt password
-                $validated['password'] = Hash::make($validated['password']);
+                //$validated['password'] = Hash::make($validated['password']);
 
                 /// return the id of the row after saving.
                 $userID = User::insertGetId($validated);
@@ -67,8 +67,8 @@ class UserController extends Controller
                 $userInfo->access_token = $accessToken;/// save the access token
                 User::where('id', '=', $userID)->update(['access_token' => $accessToken]);
                 return response()->json([
-                    'status' => true,
-                    'message' => 'user created successfully',
+                    'code' => 200,
+                    'msg' => 'user created successfully',
                     'data' => $userInfo
                 ], 200);
             }
@@ -79,21 +79,21 @@ class UserController extends Controller
             User::where('open_id', '=', $validated['open_id'])->update(['access_token' => $accessToken]);
 
             return response()->json([
-                'status' => true,
-                'message' => 'user loged successfully',
+                'code' => 200,
+                'msg' => 'user logged successfully',
                 'data' => $user,
             ], 200);
         }
         catch(\Throwable $e){
             return response()->json([
                 'status' => false,
-                'message' => $e->getMessage(),
+                'msg' => $e->getMessage(),
             ], 500);
         }
         catch(\Exception $e){
             return response()->json([
                 'status' => false,
-                'message' => $e->getMessage(),
+                'msg' => $e->getMessage(),
             ], 500);
         }
     }
