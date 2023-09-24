@@ -19,10 +19,10 @@ php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 php artisan migrate
 ```
 
-## Controller:
+## APIs Controller:
 ```
 php artisan make:controller API/UserController
-php artisan make:controller ../../Admin/Controllers/CourseTypeController
+php artisan make:controller API/CourseController
 
 ```
 
@@ -33,6 +33,11 @@ php artisan admin:make TestController --model=App\\Models\\User
 OR
 2. On Windows
 php artisan admin:make TestController --model=App\Models\User
+
+php artisan admin:make UserController --model=App\\Models\\User
+php artisan admin:make CourseController --model=App\\Models\\Course
+php artisan admin:make CourseTypeController --model=App\\Models\\CourseType
+
 ```
 
 ## migration

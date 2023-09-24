@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\API\UserController;
+//use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,30 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//   api/login
-Route::post('/login',[UserController::class, 'createUser'] );
-// Route::post('/auth/login',[UserController::class, 'loginUser'] );
+
+/**
+ * No need of importing the Controllers since it's already imported globally in the /Providers/RouteService.php i.e.     protected $namespace = "App\Http\Controllers";
+
+ */
+Route::group(['namespace'=>'Api'], function(){
+    //   api/login
+    //Route::post('/login',[UserController::class, 'createUser'] );
+    
+    Route::post('/login','UserController@createUser' );
+    
+    Route::group(['middleware'=>['auth:sanctum']], function(){
+        Route::any('/course-list', 'CourseController@courseList');
+    });
+
+});
+
+ // clear cache
+// THIS WILL SOLVE ERROR: There is no existing directory at /storage/logs and its not buildable: Permission denied
+Route::get('/reset', function (){
+    Artisan::call('route:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+
+    return ["status_code" => 200, "message" => "Reset successfully"];
+});

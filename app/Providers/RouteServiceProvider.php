@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    ///global namespace for all controllers
+    protected $namespace = 'App\Http\Controllers';
     /**
      * The path to your application's "home" route.
      *
@@ -24,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        /// User can only make 60 requests per minute, else the system will blow you
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
@@ -31,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
+                ->namespace($this->namespace) /// activate middleware
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
