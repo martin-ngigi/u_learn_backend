@@ -16,6 +16,7 @@ class CourseTypeController extends AdminController
     //
     protected $title ='Course Types';
 
+    /// showing tree form of the menus.. tree is draggable
     public function index(Content $content)
     {
         $tree = new Tree(new CourseType);
@@ -24,6 +25,7 @@ class CourseTypeController extends AdminController
 
     }
 
+    /// view
     protected function detail($id)
     {
         $show = new Show( CourseType::findOrShow($id));
@@ -44,6 +46,7 @@ class CourseTypeController extends AdminController
         return $show;
     }
 
+    /// create or edit a row
     protected function form()
     {
         $form = new Form(new CourseType());

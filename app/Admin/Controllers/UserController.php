@@ -12,6 +12,7 @@ class UserController extends AdminController
 {
     protected $title ='Members List';
 
+    /// show rows
     protected function grid()
     {
         $grid = new Grid(new User());
@@ -30,6 +31,7 @@ class UserController extends AdminController
         return $grid;
     }
 
+    // for view one row
     protected function detail($id)
     {
         $show = new Show(User::findOrFail($id));
@@ -43,6 +45,7 @@ class UserController extends AdminController
         return $show;
     }
 
+    /// ctreate or edit
     protected function form()
     {
         $form = new Form(new User());
