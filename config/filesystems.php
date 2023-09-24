@@ -61,6 +61,9 @@ return [
          * This will help solve the problem of "config error"
          * uploads folder is where the image is uploaded and stored. i.e. public/uploads
          */
+        # MARTIN ADDED
+        #THIS WILL ENABLE ADMIN TO VIEW IMAGES AS WELl... Check .env file in the  as well i.e. APP_URL
+        
         'admin' => [
             'driver'     => 'local',
             'root'       => public_path('uploads'),
