@@ -22,3 +22,18 @@ php artisan migrate
 ## Controller:
 ```
 php artisan make:controller API/UserController
+php artisan make:controller ../../Admin/Controllers/CourseTypeController
+```
+## migration
+- course_types is the table name
+```
+php artisan make:migration create_course_types_table
+```
+- undo migration
+```
+php artisan migrate:rollback
+```
+- model
+```
+php artisan make:model CourseType
+```
