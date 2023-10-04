@@ -23,6 +23,7 @@ php artisan migrate
 ```
 php artisan make:controller API/UserController
 php artisan make:controller API/CourseController
+php artisan make:controller API/PayController 
 
 ```
 
