@@ -44,7 +44,7 @@ class CourseController extends Controller
         
         try{
             // $results = Course::where('id',$id)->select('id', 'name', 'thumbnail','video', 'lesson_num', 'price')->get();
-        $results = Course::where('id',$id)->get([
+        $results = Course::where('id',$id)->first([
             'id',
             'name',
             'user_token',
@@ -53,11 +53,13 @@ class CourseController extends Controller
             'lesson_num',
             'video_length',
             'thumbnail',
+            'downloadable_res',
             'video',
         ]);
         // $results = Course::where('id',$id)->get(['id', 'name', 'thumbnail','video', 'description','lesson_num', 'price'])->first();
 
-        // $results = Course::where('id',$id)->get();
+
+        // returning stripe url
         return response()->json([
             'code' => 200,
             'msg' => 'My course detail is here',

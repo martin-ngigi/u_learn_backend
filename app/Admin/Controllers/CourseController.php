@@ -42,6 +42,7 @@ class CourseController extends AdminController
         $grid->column('price', __('Price'));
         $grid->column('lesson_num', __('Lesson num'));
         $grid->column('video_length', __('Video length'));
+        $grid->column('downloadable_res', __('Downloadable Resource')); 
         $grid->column('follow', __('Follow'));
         $grid->column('created_at', __('Created at'));
 
@@ -73,6 +74,7 @@ class CourseController extends AdminController
         $show->field('video_length', __('Video length'));
         $show->field('follow', __('Follow'));
         $show->field('score', __('Score'));
+        $show->field('downloadable_res', __('Downloadable Resources'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -92,6 +94,7 @@ class CourseController extends AdminController
         $form->decimal('price', 'Price');  /// decimal helps in retrieving the decimal value from DB
         $form->number('lesson_num', 'Lesson Number');
         $form->number('video_length', 'Video Length');
+        $form->number('downloadable_res', __('Downloadable Resources'));
 
         $user_result = User::pluck('name', 'token');/// who is posting
         $form->select('user_token','Teacher')->options($user_result);
