@@ -34,6 +34,9 @@ class CourseController extends Controller
 
     }
     
+    /**
+     * http://127.0.0.1:8000/api/course-detail?id=1
+     */
     public function courseDetail( Request $request){
         //course id
         $id = $request->id;

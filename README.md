@@ -55,6 +55,9 @@ php artisan migrate:rollback
 ```
 php artisan make:model CourseType -m
 php artisan make:model Course -m
+php artisan make:model Order -m
+php artisan make:model MyStripeKeys -m
+
 ```
 
 ## run server globally
@@ -119,4 +122,9 @@ php artisan config:cache
 php artisan cache:clear
 composer dump-autoload
 php artisan view:clear
+```
+
+## Stripe payments
+```
+composer require stripe/stripe-php
 ```
